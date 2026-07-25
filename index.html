@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Malerfirmaet Linda Classen — Maler i Ribe</title>
+<meta name="description" content="Malerfirmaet Linda Classen udfører malerarbejde inde og ude i Ribe og omegn. Nybyg, renovering, spartling, tapetsering og facader. Ring 60 14 43 55.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#231e19;
+    --ink-deep:#171310;
+    --paper:#f5eee1;
+    --paper-2:#ece0c9;
+    --surface:#ffffff;
+    --accent:#c1602c;
+    --accent-deep:#9c4a1e;
+    --olive:#5c6b48;
+    --border-subtle:#ddd0b2;
+    --muted:#5f5847;
+    --body-copy:#332e26;
+    --radius:3px;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
+  }
+  body{
+    margin:0; background:var(--paper); color:var(--body-copy);
+    font-family:'Inter',sans-serif; font-size:17px; line-height:1.6;
+  }
+  h1,h2,h3{ font-family:'Fraunces',serif; margin:0; color:var(--ink); font-weight:600; letter-spacing:-0.01em; }
+  .mono{ font-family:'IBM Plex Mono',monospace; letter-spacing:.03em; }
+  a{ color:inherit; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 24px; }
+  a:focus-visible, button:focus-visible{ outline:3px solid var(--accent); outline-offset:2px; }
+
+  /* ---------- Signature brush-drip pattern ---------- */
+  .brush-pattern{
+    position:absolute; inset:0; pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.09' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M10 30 q18 -20 34 0 t34 0'/%3E%3Cpath d='M60 90 q18 -20 34 0 t34 0'/%3E%3Ccircle cx='20' cy='110' r='3' fill='%23ffffff' fill-opacity='0.09' stroke='none'/%3E%3Ccircle cx='120' cy='50' r='3' fill='%23ffffff' fill-opacity='0.09' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+    background-size:140px 140px;
+  }
+  .brush-pattern.dark-on-light{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' stroke='%23231e19' stroke-opacity='0.055' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M10 30 q18 -20 34 0 t34 0'/%3E%3Cpath d='M60 90 q18 -20 34 0 t34 0'/%3E%3Ccircle cx='20' cy='110' r='3' fill='%23231e19' fill-opacity='0.055' stroke='none'/%3E%3Ccircle cx='120' cy='50' r='3' fill='%23231e19' fill-opacity='0.055' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* ---------- Header ---------- */
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:rgba(245,238,225,0.94);
+    backdrop-filter:blur(6px);
+    border-bottom:3px solid var(--accent);
+  }
+  .nav-row{
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+    padding:8px 24px; max-width:1180px; margin:0 auto;
+  }
+  .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; }
+  .brand img{ height:84px; width:auto; }
+  nav.links{ display:flex; gap:26px; }
+  nav.links a{
+    color:var(--ink); text-decoration:none; font-size:.95rem; font-weight:500;
+    padding:4px 2px; border-bottom:2px solid transparent;
+  }
+  nav.links a:hover{ border-color:var(--accent); }
+  .nav-call{
+    display:flex; align-items:center; gap:8px;
+    background:var(--accent); color:#fff; text-decoration:none;
+    padding:10px 18px; font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:.92rem;
+    border-radius:var(--radius); white-space:nowrap;
+  }
+  .nav-call:hover{ background:var(--accent-deep); }
+  @media (max-width:760px){
+    nav.links{ display:none; }
+    .brand img{ height:58px; }
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 28px; font-weight:600; font-size:1rem;
+    text-decoration:none; border-radius:var(--radius);
+    border:2px solid transparent; transition:transform .12s ease, background .15s ease;
+    cursor:pointer;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-primary{ background:var(--accent); color:#fff; }
+  .btn-primary:hover{ background:var(--accent-deep); }
+  .btn-outline{ border-color:rgba(255,255,255,.55); color:#fff; }
+  .btn-outline:hover{ border-color:#fff; background:rgba(255,255,255,.08); }
+  .btn-outline.on-light{ border-color:var(--ink); color:var(--ink); }
+  .btn-outline.on-light:hover{ background:var(--ink); color:#fff; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative; overflow:hidden; color:var(--ink);
+    background:
+      radial-gradient(1100px 520px at 84% -10%, rgba(193,96,44,0.14), transparent 60%),
+      var(--paper);
+    border-bottom:1px solid var(--border-subtle);
+  }
+  .hero-inner{ position:relative; z-index:2; max-width:1180px; margin:0 auto; padding:76px 24px 0; display:flex; align-items:center; gap:52px; flex-wrap:wrap; }
+  .hero-text{ flex:1 1 440px; }
+  .hero-photo{ flex:0 0 320px; max-width:320px; align-self:flex-end; }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; color:var(--accent-deep); font-size:.85rem;
+    letter-spacing:.14em; text-transform:uppercase; display:flex; align-items:center; gap:10px;
+    margin-bottom:20px;
+  }
+  .eyebrow::before{ content:""; width:28px; height:2px; background:var(--accent-deep); display:inline-block; }
+  .hero h1{ color:var(--ink); font-size:clamp(2.2rem,5vw,3.4rem); line-height:1.12; max-width:16ch; }
+  .hero h1 .accent{ color:var(--accent); }
+  .hero-sub{ margin-top:22px; font-size:1.14rem; max-width:46ch; color:var(--muted); }
+  .hero-ctas{ margin-top:32px; display:flex; gap:16px; flex-wrap:wrap; }
+  .hero-strip{ position:relative; z-index:2; border-top:1px solid var(--border-subtle); background:var(--paper-2); margin-top:52px; }
+  .hero-strip .wrap{ display:grid; grid-template-columns:repeat(3,1fr); }
+  .hero-strip .item{ padding:20px 22px; border-left:1px solid var(--border-subtle); font-family:'IBM Plex Mono',monospace; font-size:.85rem; color:var(--muted); }
+  .hero-strip .item:first-child{ border-left:none; }
+  .hero-strip .item b{ display:block; color:var(--ink); font-family:'Fraunces',serif; font-weight:600; font-size:1rem; margin-bottom:4px; }
+  @media (max-width:900px){
+    .hero-photo{ display:none; }
+  }
+  @media (max-width:700px){
+    .hero-strip .wrap{ grid-template-columns:1fr; }
+    .hero-strip .item{ border-left:none; border-top:1px solid var(--border-subtle); }
+    .hero-strip .item:first-child{ border-top:none; }
+    .hero-inner{ padding:44px 20px 0; }
+  }
+
+  /* ---------- Brush-stroke divider ---------- */
+  .seam{ line-height:0; }
+  .seam svg{ display:block; width:100%; height:26px; }
+
+  /* ---------- Section shell ---------- */
+  section{ padding:86px 0; position:relative; }
+  section[id]{ scroll-margin-top:90px; }
+  .section-head{ max-width:640px; margin-bottom:46px; }
+  .section-head .eyebrow{ color:var(--accent-deep); }
+  .section-head .eyebrow::before{ background:var(--accent-deep); }
+  .section-head h2{ font-size:clamp(1.9rem,3.2vw,2.5rem); }
+  .section-head p{ margin-top:14px; color:var(--muted); font-size:1.05rem; max-width:55ch; }
+
+  /* ---------- Framed photo (signature device) ---------- */
+  .frame{ position:relative; }
+  .frame-inner{
+    background:var(--ink); border:8px solid var(--ink); border-bottom:none; position:relative;
+  }
+  .frame-photo{ overflow:hidden; }
+  .frame-photo img{ display:block; width:100%; height:auto; }
+  .frame-tape{
+    position:absolute; top:-14px; left:26px; width:70px; height:28px;
+    background:rgba(193,96,44,.85); transform:rotate(-4deg);
+    box-shadow:0 2px 4px rgba(0,0,0,.25); z-index:3;
+  }
+  .frame-cap{
+    padding:12px 16px; background:var(--ink-deep); color:#cfc5ac;
+    font-family:'IBM Plex Mono',monospace; font-size:.82rem; border-top:2px solid var(--accent);
+  }
+
+  /* ---------- Om os ---------- */
+  .om-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:58px; align-items:center; }
+  .om-text p{ font-size:1.08rem; color:var(--body-copy); margin:0 0 16px; }
+  .om-text p:last-child{ margin-bottom:0; }
+  @media (max-width:880px){
+    .om-grid{ grid-template-columns:1fr; }
+    .om-photo{ order:-1; max-width:420px; margin:0 auto; }
+  }
+
+  /* ---------- Services ---------- */
+  .services-section{ background:var(--paper-2); }
+  .services-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .svc-card{
+    position:relative; background:var(--surface); border:1px solid var(--border-subtle);
+    padding:30px 26px 26px; box-shadow:0 1px 2px rgba(20,20,15,.06);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .svc-card:hover{ transform:translateY(-4px); box-shadow:0 14px 26px rgba(20,20,15,.1); }
+  .svc-num{ font-family:'IBM Plex Mono',monospace; color:var(--accent-deep); font-size:.82rem; letter-spacing:.08em; }
+  .svc-card h3{ font-size:1.32rem; margin:10px 0 12px; }
+  .svc-card p{ color:var(--muted); margin:0; font-size:.97rem; }
+  .svc-icon{ width:44px; height:44px; margin-bottom:6px; color:var(--accent); }
+  .svc-icon svg{ width:100%; height:100%; }
+  @media (max-width:900px){ .services-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:600px){ .services-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- Gallery ---------- */
+  .gallery-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  .gallery-item{ cursor:zoom-in; }
+  .gallery-item .frame-photo img{ width:100%; height:260px; object-fit:cover; transition:transform .4s ease; }
+  .gallery-item:hover .frame-photo img{ transform:scale(1.06); }
+  @media (max-width:900px){ .gallery-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:520px){ .gallery-grid{ grid-template-columns:1fr; } }
+
+  /* Lightbox */
+  .lightbox{ position:fixed; inset:0; background:rgba(15,12,9,.94); display:none; align-items:center; justify-content:center; z-index:100; padding:30px; }
+  .lightbox.open{ display:flex; }
+  .lightbox img{ max-width:92vw; max-height:82vh; border:3px solid var(--accent); }
+  .lightbox-close{
+    position:absolute; top:22px; right:26px; background:var(--accent); color:#fff; border:none;
+    width:44px; height:44px; font-size:1.4rem; cursor:pointer; border-radius:var(--radius);
+  }
+  .lightbox-cap{ position:absolute; bottom:26px; left:50%; transform:translateX(-50%); color:#e9e0cd; font-family:'IBM Plex Mono',monospace; font-size:.9rem; }
+
+  /* ---------- Before / after slider ---------- */
+  .ba-section .section-head{ margin-left:auto; margin-right:auto; text-align:center; }
+  .before-after-wrap{ max-width:440px; margin:0 auto; }
+  .ba-slider{
+    position:relative; width:100%; aspect-ratio:3/4; overflow:hidden; user-select:none; touch-action:none;
+    border:8px solid var(--ink); box-shadow:0 20px 40px rgba(20,15,10,.22);
+  }
+  .ba-slider img{ position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; pointer-events:none; }
+  .ba-after{ clip-path:inset(0 0 0 50%); }
+  .ba-divider{ position:absolute; top:0; bottom:0; left:50%; width:3px; background:#fff; transform:translateX(-1.5px); box-shadow:0 0 8px rgba(0,0,0,.45); }
+  .ba-handle{
+    position:absolute; top:50%; left:50%; width:54px; height:54px; background:var(--accent); border-radius:50%;
+    transform:translate(-50%,-50%); display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 14px rgba(0,0,0,.35); cursor:ew-resize; border:3px solid #fff;
+  }
+  .ba-handle svg{ width:22px; height:22px; }
+  .ba-label{ position:absolute; top:14px; background:rgba(23,19,16,.8); color:#fff; font-family:'IBM Plex Mono',monospace; font-size:.78rem; font-weight:600; letter-spacing:.05em; padding:6px 13px; border-radius:20px; pointer-events:none; text-transform:uppercase; }
+  .ba-label.before{ left:14px; }
+  .ba-label.after{ right:14px; }
+  .ba-hint{ text-align:center; color:var(--muted); font-size:.92rem; margin-top:18px; }
+  .ba-hint b{ color:var(--ink); }
+
+  /* ---------- Testimonials ---------- */
+  .quotes{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px; }
+  .quote-card{ background:var(--surface); border:1px solid var(--border-subtle); padding:26px 26px 22px; position:relative; }
+  .quote-card::before{ content:"\201C"; position:absolute; top:2px; left:20px; font-size:3.2rem; color:var(--accent); opacity:.4; font-family:'Fraunces',serif; }
+  .quote-card p{ font-size:1.1rem; margin:16px 0 14px; font-family:'Fraunces',serif; color:var(--ink); }
+  .quote-card span{ font-weight:600; font-size:.86rem; color:var(--muted); font-family:'IBM Plex Mono',monospace; }
+
+  /* ---------- Contact ---------- */
+  .contact-section{ position:relative; background:var(--paper-2); color:var(--ink); overflow:hidden; }
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start; position:relative; z-index:2; }
+  .contact-section .section-head h2{ color:var(--ink); }
+  .contact-section .section-head p{ color:var(--muted); }
+  .contact-section .eyebrow{ color:var(--accent-deep); }
+  .contact-section .eyebrow::before{ background:var(--accent-deep); }
+  .nameplate{ position:relative; background:var(--surface); border:1px solid var(--border-subtle); border-top:5px solid var(--ink); padding:34px 32px; }
+  .nameplate h3{ color:var(--ink); font-family:'IBM Plex Mono',monospace; font-size:1rem; letter-spacing:.12em; border-bottom:1px solid var(--border-subtle); padding-bottom:14px; margin-bottom:20px; }
+  .np-row{ display:flex; gap:14px; align-items:flex-start; padding:12px 0; border-bottom:1px dashed var(--border-subtle); }
+  .np-row:last-child{ border-bottom:none; }
+  .np-label{ font-family:'IBM Plex Mono',monospace; color:var(--accent-deep); font-size:.78rem; letter-spacing:.08em; width:92px; flex-shrink:0; padding-top:2px; text-transform:uppercase; }
+  .np-val{ font-size:1.02rem; color:var(--body-copy); }
+  .np-val a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--border-subtle); }
+  .np-val a:hover{ border-color:var(--accent); color:var(--accent-deep); }
+  .contact-form{ background:var(--surface); color:var(--ink); padding:34px 32px; border-top:5px solid var(--accent); }
+  .contact-form h3{ font-family:'IBM Plex Mono',monospace; font-size:1rem; letter-spacing:.1em; margin-bottom:18px; }
+  .field{ margin-bottom:16px; }
+  .field label{ display:block; font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.06em; color:var(--muted); margin-bottom:6px; text-transform:uppercase; }
+  .field input, .field textarea{
+    width:100%; padding:12px 13px; border:1px solid var(--border-subtle); background:var(--paper);
+    font-family:'Inter',sans-serif; font-size:1rem; color:var(--ink); border-radius:var(--radius);
+  }
+  .field textarea{ resize:vertical; min-height:96px; }
+  .field input:focus, .field textarea:focus{ outline:2px solid var(--accent); outline-offset:1px; }
+  .form-note{ font-size:.86rem; color:var(--muted); margin-top:10px; }
+  @media (max-width:860px){ .contact-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- Footer ---------- */
+  footer{ background:var(--paper); color:var(--muted); padding:26px 0; font-size:.88rem; border-top:1px solid var(--border-subtle); }
+  .foot-row{ display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+  footer a{ color:var(--ink); text-decoration:none; }
+  footer a:hover{ color:var(--accent-deep); }
+
+  @media (max-width:700px){
+    section{ padding:56px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav-row">
+    <a href="#top" class="brand">
+      <img src="assets/logo.png" alt="Malerfirmaet Linda Classen logo">
+    </a>
+    <nav class="links">
+      <a href="#om-os">Om os</a>
+      <a href="#services">Services</a>
+      <a href="#arbejde">Galleri</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="nav-call" href="tel:60144355">📞 Ring: 60 14 43 55</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="brush-pattern dark-on-light" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="eyebrow">Malerfirma · Ribe</div>
+        <h1>Første klasses <span class="accent">malerarbejde</span> i Ribe og omegn</h1>
+        <p class="hero-sub">Malerfirmaet Linda Classen udfører maling, spartling og tapetsering — inde og ude. Fra nybyg og renovering til fredede og ældre bygninger.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="tel:60144355">Ring nu — 60 14 43 55</a>
+          <a class="btn btn-outline on-light" href="mailto:malerclassen@outlook.dk">Send en mail</a>
+        </div>
+      </div>
+      <div class="hero-photo frame">
+        <div class="frame-inner">
+          <span class="frame-tape"></span>
+          <div class="frame-photo">
+            <img src="assets/van-side.jpg" alt="Malerfirmaet Linda Classens firmabil" loading="eager">
+          </div>
+        </div>
+        <div class="frame-cap">FØRSTEKLASSES MALERARBEJDE</div>
+      </div>
+    </div>
+    <div class="hero-strip">
+      <div class="wrap">
+        <div class="item"><b>Maling inde &amp; ude</b>Vægge, lofter, træværk og facader</div>
+        <div class="item"><b>Spartling &amp; tapet</b>Klargøring, mønstret tapet og fototapet</div>
+        <div class="item"><b>Erhverv &amp; privat</b>Uforpligtende tilbud</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="seam" aria-hidden="true">
+    <svg viewBox="0 0 1200 26" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 13 Q 60 -4 120 13 T 240 13 T 360 13 T 480 13 T 600 13 T 720 13 T 840 13 T 960 13 T 1080 13 T 1200 13" fill="none" stroke="#c1602c" stroke-width="7" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <!-- OM OS -->
+  <section id="om-os">
+    <div class="wrap om-grid">
+      <div class="om-text">
+        <div class="section-head" style="margin-bottom:24px;">
+          <div class="eyebrow">Om malerfirmaet</div>
+          <h2>Om Linda Classen</h2>
+        </div>
+        <p>Jeg startede Malerfirmaet Linda Classen som selvstændig den 1. marts 2024, med base på Hermelintoften 38 i Ribe. Siden da har jeg hjulpet kunder i Ribe og omegn med alt fra nybyg og renoveringsprojekter til fredede og ældre bygninger.</p>
+        <p>Jeg tilbyder mine services til både private og erhverv — og giver altid et uforpligtende tilbud, inden vi går i gang.</p>
+      </div>
+      <div class="om-photo frame">
+        <div class="frame-inner">
+          <span class="frame-tape"></span>
+          <div class="frame-photo">
+            <img src="assets/linda-van.jpg" alt="Linda Classen foran firmabilen" loading="eager">
+          </div>
+        </div>
+        <div class="frame-cap">LINDA CLASSEN · MALERFIRMAET</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="services-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Det laver jeg</div>
+        <h2>Services</h2>
+        <p>Konkret og til punkt og prikke — det jeg tilbyder, uden vagt sprog.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="svc-card">
+          <div class="svc-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="8" width="26" height="9" rx="2"></rect>
+              <line x1="19" y1="17" x2="19" y2="26"></line>
+              <line x1="19" y1="26" x2="32" y2="40"></line>
+            </svg>
+          </div>
+          <div class="svc-num">01 / NYBYG &amp; RENOVERING</div>
+          <h3>Nybyg &amp; renovering</h3>
+          <p>Malerarbejde i nybyggede boliger, alment byggeri og renoveringsprojekter — fra enkelte rum til hele boliger.</p>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 40 V22 L24 9 L40 22 V40"></path>
+              <line x1="18" y1="40" x2="18" y2="27"></line>
+              <line x1="30" y1="40" x2="30" y2="27"></line>
+            </svg>
+          </div>
+          <div class="svc-num">02 / FREDEDE BYGNINGER</div>
+          <h3>Fredede &amp; ældre bygninger</h3>
+          <p>Erfaring med historiske huse, ældre vinduer og træfacader, hvor der skal tages særlige hensyn.</p>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="18" y="6" width="10" height="14" rx="2"></rect>
+              <path d="M18 20 L14 32 L23 37 L30 31 L28 20 Z"></path>
+              <line x1="20" y1="40" x2="20" y2="37"></line>
+            </svg>
+          </div>
+          <div class="svc-num">03 / MALING</div>
+          <h3>Maling inde &amp; ude</h3>
+          <p>Vægge, lofter, træværk og facader — indendørs og udendørs, med kvalitetsmaterialer.</p>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 8 L38 8 L28 30 L18 30 Z"></path>
+              <line x1="23" y1="30" x2="23" y2="41"></line>
+              <line x1="17" y1="41" x2="29" y2="41"></line>
+            </svg>
+          </div>
+          <div class="svc-num">04 / SPARTLING</div>
+          <h3>Spartling</h3>
+          <p>Reparation af vægge, lofter og stuk, så overfladen er klar til maling.</p>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="9" width="11" height="30" rx="5.5"></rect>
+              <path d="M17 11 H38 V33 L29 42 H17"></path>
+              <line x1="29" y1="42" x2="29" y2="33"></line>
+              <line x1="29" y1="33" x2="38" y2="33"></line>
+            </svg>
+          </div>
+          <div class="svc-num">05 / TAPETSERING</div>
+          <h3>Tapetsering</h3>
+          <p>Almindeligt tapet, mønstret tapet og fototapet, sat op med præcision.</p>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M24 8 C12 8 6 16 6 24 C6 32 14 37 21 34 C24 33 21 29 24 27 C27 25 32 28 37 23 C42 18 37 8 24 8 Z"></path>
+              <circle cx="16" cy="21" r="1.6" fill="currentColor" stroke="none"></circle>
+              <circle cx="24" cy="16" r="1.6" fill="currentColor" stroke="none"></circle>
+              <circle cx="32" cy="20" r="1.6" fill="currentColor" stroke="none"></circle>
+            </svg>
+          </div>
+          <div class="svc-num">06 / RÅDGIVNING</div>
+          <h3>Flyttelejligheder &amp; farverådgivning</h3>
+          <p>Klargøring af boliger ved fraflytning eller indflytning, samt rådgivning om farver og design.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="arbejde">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Portfolio</div>
+        <h2>Arbejdseksempler</h2>
+        <p>Et udsnit af opgaver jeg har løst for kunder i Ribe-området. Klik på et billede for at se det i stort format.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item frame" tabindex="0" role="button" data-full="assets/mural-vaerelse.jpg" data-cap="Opsætning af fototapet i børneværelse">
+          <div class="frame-inner">
+            <span class="frame-tape"></span>
+            <div class="frame-photo"><img src="assets/mural-vaerelse.jpg" alt="Fototapet i børneværelse" loading="lazy"></div>
+          </div>
+          <div class="frame-cap">FOTOTAPET, BØRNEVÆRELSE</div>
+        </div>
+        <div class="gallery-item frame" tabindex="0" role="button" data-full="assets/spisestue.jpg" data-cap="Spartling og maling af vægge og lofter">
+          <div class="frame-inner">
+            <span class="frame-tape"></span>
+            <div class="frame-photo"><img src="assets/spisestue.jpg" alt="Nymalet spisestue med grønne vægge" loading="lazy"></div>
+          </div>
+          <div class="frame-cap">SPARTLING &amp; MALING, SPISESTUE</div>
+        </div>
+        <div class="gallery-item frame" tabindex="0" role="button" data-full="assets/gang.jpg" data-cap="Entré og trappeopgang efter maling">
+          <div class="frame-inner">
+            <span class="frame-tape"></span>
+            <div class="frame-photo"><img src="assets/gang.jpg" alt="Nymalet entré og trappeopgang" loading="lazy"></div>
+          </div>
+          <div class="frame-cap">ENTRÉ &amp; TRAPPEOPGANG</div>
+        </div>
+        <div class="gallery-item frame" tabindex="0" role="button" data-full="assets/stol.jpg" data-cap="Malerarbejde i stue">
+          <div class="frame-inner">
+            <span class="frame-tape"></span>
+            <div class="frame-photo"><img src="assets/stol.jpg" alt="Nymalet stue med grøn væg" loading="lazy"></div>
+          </div>
+          <div class="frame-cap">MALERARBEJDE, STUE</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="seam" aria-hidden="true">
+    <svg viewBox="0 0 1200 26" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 13 Q 60 -4 120 13 T 240 13 T 360 13 T 480 13 T 600 13 T 720 13 T 840 13 T 960 13 T 1080 13 T 1200 13" fill="none" stroke="#c1602c" stroke-width="7" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <!-- BEFORE / AFTER -->
+  <section class="ba-section services-section" id="foer-efter">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Se selv forskellen</div>
+        <h2>Før &amp; efter: Facadedør</h2>
+        <p>Træk i den orange knap for at skifte mellem før og efter.</p>
+      </div>
+      <div class="before-after-wrap">
+        <div class="ba-slider" id="baSlider">
+          <img src="assets/dor-efter.jpg" alt="Dør efter maling – sort" class="ba-before">
+          <img src="assets/dor-foer.jpg" alt="Dør før maling – hvid og slidt" class="ba-after" id="baAfterImg">
+          <div class="ba-label before">Efter</div>
+          <div class="ba-label after">Før</div>
+          <div class="ba-divider" id="baDivider">
+            <div class="ba-handle" id="baHandle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>
+            </div>
+          </div>
+        </div>
+        <p class="ba-hint"><b>Træk ↔</b> i knappen. Samme dør — afrenset, spartlet og malet sort.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="udtalelser">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Kundernes ord</div>
+        <h2>Hvad kunderne siger</h2>
+      </div>
+      <div class="quotes">
+        <div class="quote-card"><p>Super flot arbejde.</p><span>— MARIANNE STENGER</span></div>
+        <div class="quote-card"><p>Ser mega godt ud.</p><span>— MARIANNE OSTER</span></div>
+        <div class="quote-card"><p>Fed opgave.</p><span>— ROBERT KNUDSEN, DIN MALER</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="seam" aria-hidden="true">
+    <svg viewBox="0 0 1200 26" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 13 Q 60 -4 120 13 T 240 13 T 360 13 T 480 13 T 600 13 T 720 13 T 840 13 T 960 13 T 1080 13 T 1200 13" fill="none" stroke="#c1602c" stroke-width="7" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="kontakt" class="contact-section">
+    <div class="brush-pattern dark-on-light" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Kontakt</div>
+        <h2>Ring, mail eller skriv</h2>
+        <p>Fortæl kort hvad opgaven drejer sig om, så vender jeg tilbage hurtigst muligt.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="nameplate">
+          <h3>KONTAKTOPLYSNINGER</h3>
+          <div class="np-row">
+            <div class="np-label">TELEFON</div>
+            <div class="np-val"><a href="tel:60144355">60 14 43 55</a></div>
+          </div>
+          <div class="np-row">
+            <div class="np-label">EMAIL</div>
+            <div class="np-val"><a href="mailto:malerclassen@outlook.dk">malerclassen@outlook.dk</a></div>
+          </div>
+          <div class="np-row">
+            <div class="np-label">ADRESSE</div>
+            <div class="np-val"><a href="https://www.google.com/maps/search/?api=1&query=Hermelintoften+38%2C+6760+Ribe" target="_blank" rel="noopener">Hermelintoften 38<br>6760 Ribe</a></div>
+          </div>
+          <div class="np-row">
+            <div class="np-label">CVR</div>
+            <div class="np-val">44610582</div>
+          </div>
+          <div class="np-row">
+            <div class="np-label">FACEBOOK</div>
+            <div class="np-val"><a href="https://www.facebook.com/profile.php?id=61556451752976" target="_blank" rel="noopener">Malerfirmaet Linda Classen</a></div>
+          </div>
+        </div>
+
+        <form class="contact-form" onsubmit="return false;">
+          <h3>SKRIV EN BESKED</h3>
+          <div class="field">
+            <label for="navn">Navn</label>
+            <input id="navn" name="navn" type="text" required>
+          </div>
+          <div class="field">
+            <label for="tlf">Telefon</label>
+            <input id="tlf" name="tlf" type="tel" required>
+          </div>
+          <div class="field">
+            <label for="besked">Hvad drejer det sig om?</label>
+            <textarea id="besked" name="besked" required></textarea>
+          </div>
+          <a class="btn btn-primary" href="mailto:malerclassen@outlook.dk" style="width:100%; justify-content:center;">Send besked</a>
+          <p class="form-note">Knappen åbner din mail-app med malerclassen@outlook.dk som modtager.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <div>© <span id="year"></span> Malerfirmaet Linda Classen · <a href="https://www.google.com/maps/search/?api=1&query=Hermelintoften+38%2C+6760+Ribe" target="_blank" rel="noopener">Hermelintoften 38, 6760 Ribe</a></div>
+    <div><a href="tel:60144355">60 14 43 55</a> · <a href="mailto:malerclassen@outlook.dk">malerclassen@outlook.dk</a></div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Forstørret billede">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Luk billede">×</button>
+  <img id="lightboxImg" src="" alt="">
+  <div class="lightbox-cap" id="lightboxCap"></div>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCap = document.getElementById('lightboxCap');
+  function openLightbox(src, cap, altText){
+    lightboxImg.src = src; lightboxImg.alt = altText || '';
+    lightboxCap.textContent = cap || ''; lightbox.classList.add('open');
+  }
+  function closeLightbox(){ lightbox.classList.remove('open'); lightboxImg.src = ''; }
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      openLightbox(item.dataset.full, item.dataset.cap, img.alt);
+    });
+    item.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        const img = item.querySelector('img');
+        openLightbox(item.dataset.full, item.dataset.cap, img.alt);
+      }
+    });
+  });
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeLightbox(); });
+
+  // Before/after slider
+  (function(){
+    const slider = document.getElementById('baSlider');
+    const afterImg = document.getElementById('baAfterImg');
+    const divider = document.getElementById('baDivider');
+    const handle = document.getElementById('baHandle');
+    let dragging = false;
+
+    function setPos(clientX){
+      const rect = slider.getBoundingClientRect();
+      let x = clientX - rect.left;
+      x = Math.max(0, Math.min(rect.width, x));
+      const pct = (x / rect.width) * 100;
+      afterImg.style.clipPath = `inset(0 0 0 ${pct}%)`;
+      divider.style.left = pct + '%';
+    }
+    function start(e){ dragging = true; e.preventDefault(); }
+    function move(e){
+      if(!dragging) return;
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      setPos(clientX);
+    }
+    function end(){ dragging = false; }
+    handle.addEventListener('mousedown', start);
+    handle.addEventListener('touchstart', start, {passive:false});
+    window.addEventListener('mousemove', move);
+    window.addEventListener('touchmove', move, {passive:false});
+    window.addEventListener('mouseup', end);
+    window.addEventListener('touchend', end);
+    slider.addEventListener('click', function(e){
+      if(e.target === handle) return;
+      setPos(e.clientX);
+    });
+    setPos(slider.getBoundingClientRect().left + slider.getBoundingClientRect().width/2);
+  })();
+</script>
+
+</body>
+</html>
