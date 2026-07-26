@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tak for din besked — Malerfirmaet Linda Classen</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bone:#f2f0ea; --ink:#162b06; --body:#3A3D42; --muted:#787B80;
+    --hair:#E3E0D8; --brass:#9C7C4A; --brass-deep:#7E6238; --radius:2px;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0; background:var(--bone); color:var(--body);
+    font-family:'Inter',sans-serif; font-size:17px; line-height:1.7; font-weight:400;
+    min-height:100vh; display:flex; flex-direction:column;
+  }
+  h1{ font-family:'Fraunces',serif; color:var(--ink); font-weight:500; letter-spacing:-0.015em;
+      font-size:clamp(2rem,4vw,2.9rem); line-height:1.15; margin:0; }
+  a{ color:inherit; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1280px; margin:0 auto; padding:0 32px; width:100%; }
+
+  header.site{ border-bottom:1px solid var(--hair); background:rgba(251,250,247,.92); }
+  .nav-row{ display:flex; align-items:center; justify-content:space-between; gap:24px;
+            padding:10px 26px 10px 12px; max-width:1280px; margin:0 auto; }
+  .brand img{ height:74px; width:auto; }
+  .nav-call{
+    display:inline-flex; align-items:center; background:var(--ink); color:#fff;
+    text-decoration:none; padding:12px 22px; font-family:'IBM Plex Mono',monospace;
+    font-weight:500; font-size:.86rem; letter-spacing:.04em; border-radius:var(--radius);
+  }
+  .nav-call:hover{ background:var(--brass-deep); }
+
+  main{ flex:1; display:flex; align-items:center; padding:80px 0; }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; color:var(--brass); font-size:.74rem;
+    letter-spacing:.18em; text-transform:uppercase; font-weight:500;
+    display:flex; align-items:center; gap:12px; margin-bottom:20px;
+  }
+  .eyebrow::before{ content:""; width:24px; height:1px; background:var(--brass); }
+  .lead{ margin-top:22px; font-size:1.1rem; color:var(--muted); font-weight:300; max-width:48ch; }
+  .box{ max-width:640px; }
+  .next{ margin-top:36px; padding-top:28px; border-top:1px solid var(--hair); }
+  .next dl{ display:grid; grid-template-columns:auto 1fr; gap:12px 22px; margin:0; }
+  .next dt{ font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.14em;
+            color:var(--muted); text-transform:uppercase; padding-top:5px; }
+  .next dd{ margin:0; color:var(--ink); }
+  .next dd a{ text-decoration:none; border-bottom:1px solid var(--hair); }
+  .next dd a:hover{ border-color:var(--brass); color:var(--brass-deep); }
+  .btns{ margin-top:36px; display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    padding:16px 32px; font-weight:500; font-size:.98rem; text-decoration:none;
+    border-radius:var(--radius); border:1px solid transparent;
+    transition:background .2s ease, color .2s ease;
+  }
+  .btn-solid{ background:var(--ink); color:#fff; }
+  .btn-solid:hover{ background:var(--brass-deep); }
+  .btn-line{ border-color:var(--ink); color:var(--ink); }
+  .btn-line:hover{ background:var(--ink); color:#fff; }
+
+  footer{ border-top:1px solid var(--hair); padding:30px 0; font-size:.86rem;
+          color:var(--muted); font-weight:300; }
+  footer a{ color:var(--body); text-decoration:none; }
+  @media (max-width:760px){
+    .wrap{ padding:0 20px; }
+    .brand img{ height:50px; }
+    .nav-row{ padding:8px 14px 8px 6px; }
+    main{ padding:52px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav-row">
+    <a href="/" class="brand"><img src="assets/logo.png" alt="Malerfirmaet Linda Classen"></a>
+    <a class="nav-call" href="tel:60144355">60 14 43 55</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="box">
+      <div class="eyebrow">Beskeden er sendt</div>
+      <h1>Tak — jeg vender tilbage hurtigst muligt</h1>
+      <p class="lead">Din besked er nu på vej til Linda. Er det noget, der haster, er du altid velkommen til at ringe direkte.</p>
+
+      <div class="next">
+        <dl>
+          <dt>Telefon</dt>
+          <dd><a href="tel:60144355">60 14 43 55</a></dd>
+          <dt>Email</dt>
+          <dd><a href="mailto:malerclassen@outlook.dk">malerclassen@outlook.dk</a></dd>
+        </dl>
+      </div>
+
+      <div class="btns">
+        <a class="btn btn-solid" href="tel:60144355">Ring 60 14 43 55</a>
+        <a class="btn btn-line" href="/">Tilbage til forsiden</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    © <span id="year"></span> Malerfirmaet Linda Classen · Hermelintoften 38, 6760 Ribe ·
+    <a href="tel:60144355">60 14 43 55</a>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

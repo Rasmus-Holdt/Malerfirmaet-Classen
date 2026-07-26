@@ -177,7 +177,8 @@
   .alt{ background:var(--stone); }
 
   /* ---------- Om os ---------- */
-  .om-grid{ display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+  #om-os{ overflow:hidden; }
+  .om-grid{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); gap:72px; align-items:center; }
   .om-text p{ font-size:1.06rem; color:var(--body); margin:0 0 18px; font-weight:300; }
   .om-text p:last-child{ margin-bottom:0; }
   .om-sign{
@@ -185,10 +186,23 @@
     font-family:'Fraunces',serif; font-size:1.15rem; color:var(--ink);
   }
   .om-sign span{ display:block; font-family:'IBM Plex Mono',monospace; font-size:.74rem; letter-spacing:.16em; color:var(--muted); text-transform:uppercase; margin-top:6px; }
-  .om-photo img{ width:100%; height:auto; }
+  /* photo bleeds off the right edge of the viewport — editorial, not slide-deck */
+  .om-photo{ position:relative; margin-right:calc(50% - 50vw); }
+  .om-photo figure{ margin:0; position:relative; }
+  .om-photo img{
+    width:100%; aspect-ratio:1/1; object-fit:cover; object-position:66% 34%;
+    display:block;
+  }
+  .om-photo figcaption{
+    position:absolute; left:0; bottom:0; padding:52px 26px 20px; right:0;
+    background:linear-gradient(to top, rgba(10,11,13,.78), transparent);
+    color:#fff; font-family:'IBM Plex Mono',monospace; font-size:.7rem;
+    letter-spacing:.16em; text-transform:uppercase;
+  }
   @media (max-width:900px){
-    .om-grid{ grid-template-columns:1fr; gap:44px; }
-    .om-photo{ order:-1; }
+    .om-grid{ grid-template-columns:1fr; gap:40px; }
+    .om-photo{ order:-1; margin-right:calc(50% - 50vw); margin-left:calc(50% - 50vw); }
+    .om-photo img{ aspect-ratio:16/10; object-position:64% 32%; }
   }
 
   /* ---------- Services (bevaret) ---------- */
@@ -235,7 +249,8 @@
   .lightbox-cap{ position:absolute; bottom:28px; left:50%; transform:translateX(-50%); color:rgba(255,255,255,.7); font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; }
 
   /* ---------- Before / after ---------- */
-  .ba-grid{ display:grid; grid-template-columns:1fr 540px; gap:64px; align-items:center; }
+  .ba-grid{ display:grid; grid-template-columns:minmax(0,1fr) 620px; gap:64px; align-items:stretch; }
+  .ba-copy{ display:flex; flex-direction:column; justify-content:center; }
   .ba-copy .eyebrow{ margin-bottom:18px; }
   .ba-copy h2{ font-size:clamp(1.85rem, 3vw, 2.55rem); }
   .ba-copy > p{ margin-top:18px; color:var(--muted); font-size:1.04rem; font-weight:300; max-width:46ch; }
@@ -250,13 +265,13 @@
     font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.14em; color:var(--brass);
   }
   .ba-steps li b{ color:var(--ink); font-weight:500; }
-  .before-after-wrap{ max-width:540px; margin:0 auto; }
-  @media (max-width:1040px){
+  .before-after-wrap{ max-width:620px; margin:0 auto; width:100%; }
+  @media (max-width:1120px){
     .ba-grid{ grid-template-columns:1fr; gap:44px; }
     .ba-copy{ text-align:center; }
     .ba-copy .eyebrow{ justify-content:center; }
     .ba-copy > p{ margin-left:auto; margin-right:auto; }
-    .ba-steps{ text-align:left; max-width:540px; margin-left:auto; margin-right:auto; }
+    .ba-steps{ text-align:left; max-width:620px; margin-left:auto; margin-right:auto; }
   }
   .ba-slider{
     position:relative; width:100%; aspect-ratio:3/4; overflow:hidden;
@@ -308,6 +323,9 @@
   .field textarea{ resize:vertical; min-height:100px; }
   .field input:focus, .field textarea:focus{ outline:none; border-color:var(--brass); background:#fff; }
   .form-note{ font-size:.84rem; color:var(--muted); margin-top:14px; font-weight:300; }
+  .form-note a{ color:var(--ink); }
+  .hp-field{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+  button.btn{ font-family:'Inter',sans-serif; }
   @media (max-width:880px){ .contact-grid{ grid-template-columns:1fr; gap:48px; } }
 
   /* ---------- CTA band ---------- */
@@ -386,7 +404,10 @@
         </div>
       </div>
       <div class="om-photo">
-        <img src="assets/linda-van.jpg" alt="Linda Classen foran firmabilen" loading="lazy">
+        <figure>
+          <img src="assets/linda-van.jpg" alt="Linda Classen foran firmabilen" loading="lazy">
+          <figcaption>Linda Classen · Hermelintoften 38, Ribe</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -593,22 +614,35 @@
         </div>
       </div>
 
-      <form class="contact-form" onsubmit="return false;">
+      <form class="contact-form"
+            name="kontakt"
+            method="POST"
+            action="/tak.html"
+            data-netlify="true"
+            netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="kontakt">
+          <p class="hp-field">
+            <label>Udfyld ikke dette felt: <input name="bot-field"></label>
+          </p>
           <h3>Skriv en besked</h3>
           <div class="field">
             <label for="navn">Navn</label>
-            <input id="navn" name="navn" type="text" required>
+            <input id="navn" name="navn" type="text" autocomplete="name" required>
           </div>
           <div class="field">
             <label for="tlf">Telefon</label>
-            <input id="tlf" name="tlf" type="tel" required>
+            <input id="tlf" name="tlf" type="tel" autocomplete="tel" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email">
           </div>
           <div class="field">
             <label for="besked">Hvad drejer det sig om?</label>
             <textarea id="besked" name="besked" required></textarea>
           </div>
-          <a class="btn btn-solid" href="mailto:malerclassen@outlook.dk" style="width:100%;">Send besked</a>
-          <p class="form-note">Knappen åbner din mail-app med malerclassen@outlook.dk som modtager.</p>
+          <button type="submit" class="btn btn-solid" style="width:100%;">Send besked</button>
+          <p class="form-note">Beskeden sendes direkte til Linda. Du kan også ringe på <a href="tel:60144355">60 14 43 55</a>.</p>
       </form>
     </div>
   </section>
