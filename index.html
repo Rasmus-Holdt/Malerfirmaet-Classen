@@ -92,6 +92,7 @@
     transition:border-color .2s ease, color .2s ease;
   }
   nav.links a:hover{ border-color:var(--brass); color:var(--ink); }
+  nav.links a.menu-call{ display:none; }   /* only inside the phone menu */
   .nav-call{
     display:inline-flex; align-items:center; gap:9px;
     background:var(--ink); color:#fff; text-decoration:none;
@@ -115,8 +116,8 @@
   @media (max-width:820px){
     .brand img{ height:56px; }
     .nav-row{ padding:8px 12px 8px 6px; gap:10px; }
-    .nav-call{ padding:11px 15px; font-size:.78rem; }
-    .nav-toggle{ display:inline-flex; }
+    .nav-call{ display:none; }
+    .nav-toggle{ display:inline-flex; margin-left:0; }
 
     nav.links{
       position:absolute; left:0; right:0; top:100%;
@@ -133,6 +134,16 @@
     }
     nav.links a:last-child{ border-bottom:none; }
     nav.links a:hover{ border-color:var(--hair); color:var(--brass-deep); }
+
+    /* the phone number moves into the menu instead of the bar */
+    nav.links a.menu-call{
+      display:block; text-align:center;
+      margin-top:12px; padding:15px 18px;
+      background:var(--ink); color:#fff; border:none; border-radius:var(--radius);
+      font-family:'IBM Plex Mono',ui-monospace,monospace;
+      font-size:.92rem; letter-spacing:.04em;
+    }
+    nav.links a.menu-call:hover{ color:#fff; }
   }
 
   /* ---------- Buttons ---------- */
@@ -526,6 +537,7 @@
       <a href="#services">Services</a>
       <a href="#arbejde">Arbejde</a>
       <a href="#kontakt">Kontakt</a>
+      <a class="menu-call" href="tel:60144355">Ring 60 14 43 55</a>
     </nav>
     <a class="nav-call" href="tel:60144355">60 14 43 55</a>
     <button class="nav-toggle" id="navToggle" type="button"
