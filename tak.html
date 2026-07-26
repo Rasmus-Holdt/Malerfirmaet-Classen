@@ -24,6 +24,7 @@
       font-size:clamp(2rem,4vw,2.9rem); line-height:1.15; margin:0; }
   a{ color:inherit; }
   img{ max-width:100%; display:block; }
+  picture{ display:block; }
   .wrap{ max-width:1280px; margin:0 auto; padding:0 32px; width:100%; }
 
   header.site{ border-bottom:1px solid var(--hair); background:rgba(251,250,247,.92); }
@@ -69,7 +70,11 @@
           color:var(--muted); font-weight:300; }
   footer a{ color:var(--body); text-decoration:none; }
   @media (max-width:760px){
+    body{ font-size:16px; }
     .wrap{ padding:0 20px; }
+    .btns .btn{ flex:1 1 100%; }
+    .next dl{ grid-template-columns:1fr; gap:4px 0; }
+    .next dt{ padding-top:10px; }
     .brand img{ height:56px; }
     .nav-row{ padding:8px 14px 8px 6px; }
     main{ padding:52px 0; }
@@ -80,7 +85,7 @@
 
 <header class="site">
   <div class="nav-row">
-    <a href="/" class="brand"><img src="assets/logo.png" alt="Malerfirmaet Linda Classen"></a>
+    <a href="/" class="brand"><picture><source type="image/webp" srcset="assets/logo.webp"><img src="assets/logo.png" alt="Malerfirmaet Linda Classen" width="1100" height="488" decoding="async"></picture></a>
     <a class="nav-call" href="tel:60144355">60 14 43 55</a>
   </div>
 </header>
