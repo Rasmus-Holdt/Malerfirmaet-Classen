@@ -56,8 +56,16 @@
   a{ color:inherit; }
   img, svg, video{ max-width:100%; display:block; }
   picture{ display:block; }
-  /* long unbreakable strings (email, URLs) must never widen their container */
-  .np-val, .form-note, .foot-row, .next dd, .om-facts dd{ overflow-wrap:anywhere; }
+
+  /* Danish compound words are long. Let them break rather than stick out of the box. */
+  body{ overflow-wrap:break-word; }
+  h1, h2, h3, p, li, dd, dt, blockquote, .np-val, .gallery-cap, .svc-num, .factbar .item{
+    hyphens:auto; -webkit-hyphens:auto;
+  }
+  /* email/URLs have no break points at all — allow a break anywhere */
+  .np-val, .form-note, .foot-row, .next dd{ overflow-wrap:anywhere; }
+  /* flex children holding text must be allowed to shrink */
+  .om-attrib .who, .foot-row > div{ min-width:0; }
   .hero-bg picture, .gallery-item .ph picture{ width:100%; height:100%; }
   .ba-slider picture{ display:contents; }
   .wrap{ max-width:1200px; margin:0 auto; padding:0 32px; }
@@ -167,6 +175,7 @@
   .hero{
     position:relative;
     min-height:min(84vh, 760px);
+    min-height:min(84svh, 760px);   /* iOS: ignore the address bar shrinking/growing */
     display:flex; align-items:flex-end;
     overflow:hidden;
     background:var(--ink);
@@ -204,7 +213,7 @@
     color:rgba(255,255,255,.5); text-transform:uppercase;
   }
   @media (max-width:820px){
-    .hero{ min-height:min(76vh, 600px); }
+    .hero{ min-height:min(76vh, 600px); min-height:min(76svh, 600px); }
     .hero-content{ padding:0 20px 52px; }
     .hero-credit{ display:none; }
   }
@@ -321,7 +330,7 @@
   /* Lightbox */
   .lightbox{ position:fixed; inset:0; background:rgba(12,13,15,.96); display:none; align-items:center; justify-content:center; z-index:100; padding:32px; }
   .lightbox.open{ display:flex; }
-  .lightbox img{ max-width:90vw; max-height:82vh; }
+  .lightbox img{ max-width:100%; max-height:82vh; }
   .lightbox-close{
     position:absolute; top:24px; right:28px; background:transparent; color:#fff;
     border:1px solid rgba(255,255,255,.4); width:44px; height:44px; font-size:1.3rem;
@@ -495,9 +504,9 @@
     .foot-row{ flex-direction:column; align-items:flex-start; gap:10px; text-align:left; }
 
     .lightbox{ padding:16px; }
-    .lightbox img{ max-width:96vw; max-height:76vh; }
+    .lightbox img{ max-height:74vh; }
     .lightbox-close{ top:12px; right:12px; }
-    .lightbox-cap{ bottom:14px; width:88vw; text-align:center; }
+    .lightbox-cap{ bottom:14px; left:16px; right:16px; width:auto; transform:none; text-align:center; }
   }
 
   @media (max-width:420px){
@@ -505,7 +514,12 @@
     .np-row{ grid-template-columns:minmax(0,1fr); gap:4px; }
     .np-label{ padding-top:0; }
     .contact-side, .contact-form{ padding:30px 20px; }
-    .ba-steps li{ padding-left:44px; }
+    .ba-steps li{ padding-left:42px; }
+    .svc-card{ padding:26px 22px 24px; }
+    .eyebrow{ letter-spacing:.14em; gap:10px; }
+    .eyebrow::before{ width:18px; }
+    .gallery-cap{ letter-spacing:.09em; }
+    .om-facts div{ padding:22px 0; }
   }
 
   /* iOS: stop Safari zooming in when a field is focused */
@@ -889,6 +903,31 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* Layout-selvtest. Tilføj #tjek til adressen for at markere alt der er
+     bredere end skærmen. Gør intet på den normale side. */
+  if(location.hash === '#tjek'){
+    const vw = document.documentElement.clientWidth;
+    const bad = [];
+    document.querySelectorAll('body *').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if(r.width === 0 && r.height === 0) return;
+      if(r.right > vw + 1 || r.left < -1){
+        el.style.outline = '2px solid #e11';
+        bad.push({
+          tag: el.tagName.toLowerCase() + (el.className ? '.' + String(el.className).split(' ')[0] : ''),
+          left: Math.round(r.left), right: Math.round(r.right), w: Math.round(r.width)
+        });
+      }
+    });
+    const box = document.createElement('div');
+    box.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:999;background:#111;color:#0f0;'
+      + 'font:12px/1.4 monospace;padding:10px;max-height:45vh;overflow:auto;white-space:pre-wrap';
+    box.textContent = 'skærm ' + vw + 'px · dokument ' + document.documentElement.scrollWidth + 'px\n'
+      + (bad.length ? bad.map(b => `${b.tag}  ${b.left}→${b.right} (${b.w}px)`).join('\n')
+                    : 'INGEN OVERLØB — alt er inden for skærmen');
+    document.body.appendChild(box);
+  }
 
   // Mobile menu
   (function(){
