@@ -62,7 +62,7 @@
     padding:10px 26px 10px 12px; max-width:1280px; margin:0 auto;
   }
   .brand{ display:block; text-decoration:none; }
-  .brand img{ height:74px; width:auto; }
+  .brand img{ height:86px; width:auto; }
   nav.links{ display:flex; gap:34px; }
   nav.links a{
     color:var(--body); text-decoration:none; font-size:.92rem; font-weight:400;
@@ -71,18 +71,28 @@
   }
   nav.links a:hover{ border-color:var(--brass); color:var(--ink); }
   .nav-call{
-    display:inline-flex; align-items:center; gap:9px;
+    display:inline-flex; flex-direction:column; align-items:flex-start; justify-content:center;
+    height:86px; padding:0 26px;
     background:var(--ink); color:#fff; text-decoration:none;
-    padding:12px 22px; font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:.86rem;
-    letter-spacing:.04em; border-radius:var(--radius); white-space:nowrap;
+    border-radius:var(--radius); white-space:nowrap;
     transition:background .2s ease;
+  }
+  .nav-call small{
+    font-family:'IBM Plex Mono',monospace; font-size:.66rem; letter-spacing:.18em;
+    text-transform:uppercase; color:rgba(255,255,255,.62); margin-bottom:3px;
+  }
+  .nav-call b{
+    font-family:'Fraunces',serif; font-weight:500; font-size:1.5rem;
+    letter-spacing:-0.01em; line-height:1;
   }
   .nav-call:hover{ background:var(--brass-deep); }
   @media (max-width:820px){
     nav.links{ display:none; }
-    .brand img{ height:50px; }
+    .brand img{ height:56px; }
     .nav-row{ padding:8px 14px 8px 6px; }
-    .nav-call{ padding:11px 16px; font-size:.8rem; }
+    .nav-call{ height:56px; padding:0 16px; }
+    .nav-call small{ font-size:.58rem; letter-spacing:.14em; }
+    .nav-call b{ font-size:1.08rem; }
   }
 
   /* ---------- Buttons ---------- */
@@ -177,23 +187,59 @@
   .alt{ background:var(--stone); }
 
   /* ---------- Om os ---------- */
-  .om-grid{ display:grid; grid-template-columns:minmax(0,1fr) 400px; gap:72px; align-items:center; }
-  .om-text p{ font-size:1.06rem; color:var(--body); margin:0 0 18px; font-weight:300; }
-  .om-text p:last-child{ margin-bottom:0; }
-  .om-sign{
-    margin-top:32px; padding-top:24px; border-top:1px solid var(--hair);
-    font-family:'Fraunces',serif; font-size:1.15rem; color:var(--ink);
+  /* ---------- Om malerfirmaet ---------- */
+  .om-quote{
+    max-width:940px; margin:0 auto; text-align:center;
   }
-  .om-sign span{ display:block; font-family:'IBM Plex Mono',monospace; font-size:.74rem; letter-spacing:.16em; color:var(--muted); text-transform:uppercase; margin-top:6px; }
-  .om-photo figure{ margin:0; }
-  .om-photo img{ width:100%; height:auto; display:block; }
-  .om-photo figcaption{
-    margin-top:14px; font-family:'IBM Plex Mono',monospace; font-size:.68rem;
-    letter-spacing:.14em; text-transform:uppercase; color:var(--muted);
+  .om-quote blockquote{
+    margin:0; font-family:'Fraunces',serif; color:var(--ink);
+    font-size:clamp(1.5rem, 3.2vw, 2.35rem); font-weight:400;
+    line-height:1.32; letter-spacing:-0.015em;
   }
-  @media (max-width:900px){
-    .om-grid{ grid-template-columns:1fr; gap:40px; }
-    .om-photo{ max-width:400px; }
+  .om-quote blockquote::before{ content:"„"; color:var(--brass); }
+  .om-quote blockquote::after{ content:"“"; color:var(--brass); }
+  .om-attrib{
+    margin-top:40px; display:flex; align-items:center; justify-content:center; gap:18px;
+  }
+  .om-attrib img{
+    width:76px; height:76px; border-radius:50%; object-fit:cover;
+    object-position:70% 30%; flex:0 0 76px;
+  }
+  .om-attrib .who{ text-align:left; }
+  .om-attrib .who b{
+    display:block; font-family:'Fraunces',serif; font-weight:500;
+    font-size:1.12rem; color:var(--ink);
+  }
+  .om-attrib .who span{
+    display:block; font-family:'IBM Plex Mono',monospace; font-size:.7rem;
+    letter-spacing:.15em; text-transform:uppercase; color:var(--muted); margin-top:4px;
+  }
+  .om-facts{
+    margin-top:72px; padding-top:0;
+    display:grid; grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--hair);
+  }
+  .om-facts div{
+    padding:30px 34px; border-left:1px solid var(--hair);
+  }
+  .om-facts div:first-child{ border-left:none; padding-left:0; }
+  .om-facts dt{
+    font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--brass); margin-bottom:10px;
+  }
+  .om-facts dd{
+    margin:0; font-family:'Fraunces',serif; font-size:1.24rem; color:var(--ink); line-height:1.3;
+  }
+  .om-facts dd small{
+    display:block; font-family:'Inter',sans-serif; font-size:.92rem;
+    color:var(--muted); font-weight:300; margin-top:6px; line-height:1.5;
+  }
+  @media (max-width:820px){
+    .om-facts{ grid-template-columns:1fr; }
+    .om-facts div{ border-left:none; border-top:1px solid var(--hair); padding:24px 0; }
+    .om-facts div:first-child{ border-top:none; }
+    .om-attrib{ flex-direction:column; gap:14px; }
+    .om-attrib .who{ text-align:center; }
   }
 
   /* ---------- Services (bevaret) ---------- */
@@ -240,7 +286,8 @@
   .lightbox-cap{ position:absolute; bottom:28px; left:50%; transform:translateX(-50%); color:rgba(255,255,255,.7); font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; }
 
   /* ---------- Before / after ---------- */
-  .ba-grid{ display:grid; grid-template-columns:minmax(0,1fr) 400px; gap:72px; align-items:center; }
+  /* door column is sized by JS to overhang the text by --ba-overhang top and bottom */
+  .ba-grid{ display:grid; grid-template-columns:minmax(0,1fr) auto; gap:72px; align-items:center; }
   .ba-copy{ display:flex; flex-direction:column; justify-content:center; }
   .ba-copy .eyebrow{ margin-bottom:18px; }
   .ba-copy h2{ font-size:clamp(1.85rem, 3vw, 2.55rem); }
@@ -256,13 +303,16 @@
     font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.14em; color:var(--brass);
   }
   .ba-steps li b{ color:var(--ink); font-weight:500; }
-  .before-after-wrap{ max-width:400px; margin:0 auto; width:100%; }
+  .before-after-wrap{ margin:0 auto; }
+  .ba-slider{ height:var(--ba-h, 520px); width:calc(var(--ba-h, 520px) * 0.75); }
   @media (max-width:960px){
     .ba-grid{ grid-template-columns:1fr; gap:44px; }
     .ba-copy{ text-align:center; }
     .ba-copy .eyebrow{ justify-content:center; }
     .ba-copy > p{ margin-left:auto; margin-right:auto; }
     .ba-steps{ text-align:left; max-width:400px; margin-left:auto; margin-right:auto; }
+    .before-after-wrap{ max-width:400px; width:100%; }
+    .ba-slider{ height:auto; width:100%; }
   }
   .ba-slider{
     position:relative; width:100%; aspect-ratio:3/4; overflow:hidden;
@@ -295,16 +345,34 @@
   @media (max-width:820px){ .quotes{ grid-template-columns:1fr; } }
 
   /* ---------- Contact ---------- */
-  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
-  .contact-left .section-head{ margin-bottom:36px; }
-  .np-row{ display:grid; grid-template-columns:96px 1fr; gap:20px; padding:16px 0; border-bottom:1px solid var(--hair); }
+  /* one panel, split down the middle — the two halves share a border, no gap */
+  .contact-panel{
+    display:grid; grid-template-columns:1fr 1fr;
+    border:1px solid var(--hair); background:var(--surface);
+  }
+  .contact-side{ padding:48px 44px; background:var(--bone); border-right:1px solid var(--hair); }
+  .contact-side h3{
+    font-family:'Fraunces',serif; font-size:1.5rem; font-weight:500; color:var(--ink); margin:0;
+  }
+  .contact-side > p{ margin:14px 0 0; color:var(--muted); font-size:1rem; font-weight:300; }
+  .contact-side .np-list{ margin-top:32px; }
+  .np-row{ display:grid; grid-template-columns:92px 1fr; gap:18px; padding:15px 0; border-bottom:1px solid var(--hair); }
   .np-row:first-child{ border-top:1px solid var(--hair); }
-  .np-label{ font-family:'IBM Plex Mono',monospace; color:var(--muted); font-size:.72rem; letter-spacing:.14em; padding-top:5px; text-transform:uppercase; }
-  .np-val{ font-size:1.04rem; color:var(--ink); }
+  .np-label{ font-family:'IBM Plex Mono',monospace; color:var(--brass); font-size:.7rem; letter-spacing:.14em; padding-top:5px; text-transform:uppercase; }
+  .np-val{ font-size:1.02rem; color:var(--ink); }
   .np-val a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--hair); }
   .np-val a:hover{ border-color:var(--brass); color:var(--brass-deep); }
-  .contact-form{ background:var(--surface); border:1px solid var(--hair); padding:40px 36px; }
-  .contact-form h3{ font-family:'IBM Plex Mono',monospace; font-size:.76rem; letter-spacing:.16em; margin-bottom:26px; color:var(--muted); text-transform:uppercase; font-weight:500; }
+  .contact-form{ background:var(--surface); padding:48px 44px; margin:0; }
+  .contact-form h3{
+    font-family:'Fraunces',serif; font-size:1.5rem; font-weight:500;
+    color:var(--ink); margin:0 0 8px; letter-spacing:-0.01em; text-transform:none;
+  }
+  .contact-form > p.intro{ margin:0 0 28px; color:var(--muted); font-size:1rem; font-weight:300; }
+  @media (max-width:880px){
+    .contact-panel{ grid-template-columns:1fr; }
+    .contact-side{ border-right:none; border-bottom:1px solid var(--hair); padding:36px 26px; }
+    .contact-form{ padding:36px 26px; }
+  }
   .field{ margin-bottom:20px; }
   .field label{ display:block; font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.13em; color:var(--muted); margin-bottom:8px; text-transform:uppercase; }
   .field input, .field textarea{
@@ -317,7 +385,6 @@
   .form-note a{ color:var(--ink); }
   .hp-field{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
   button.btn{ font-family:'Inter',sans-serif; }
-  @media (max-width:880px){ .contact-grid{ grid-template-columns:1fr; gap:48px; } }
 
   /* ---------- CTA band ---------- */
   .cta-band{ background:var(--ink); color:#fff; padding:76px 0; text-align:center; }
@@ -351,7 +418,10 @@
       <a href="#arbejde">Arbejde</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
-    <a class="nav-call" href="tel:60144355">60 14 43 55</a>
+    <a class="nav-call" href="tel:60144355">
+      <small>Ring til Linda</small>
+      <b>60 14 43 55</b>
+    </a>
   </div>
 </header>
 
@@ -381,25 +451,35 @@
     </div>
   </div>
 
-  <!-- OM OS -->
+  <!-- OM MALERFIRMAET -->
   <section id="om-os">
-    <div class="wrap om-grid">
-      <div class="om-text">
-        <div class="eyebrow">Om malerfirmaet</div>
-        <h2>Én maler, fra første streg til sidste strøg</h2>
-        <p style="margin-top:24px;">Jeg startede Malerfirmaet Linda Classen som selvstændig den 1. marts 2024, med base på Hermelintoften 38 i Ribe. Siden da har jeg hjulpet kunder i Ribe og omegn med alt fra nybyg og renoveringsprojekter til fredede og ældre bygninger.</p>
-        <p>Jeg tilbyder mine services til både private og erhverv — og giver altid et uforpligtende tilbud, inden vi går i gang.</p>
-        <div class="om-sign">
-          Linda Classen
-          <span>Indehaver · Malerfirmaet Linda Classen</span>
+    <div class="wrap">
+      <div class="om-quote">
+        <div class="eyebrow centered">Om malerfirmaet</div>
+        <blockquote>Det har både været angstprovokerende og utrolig udfordrende at starte egen virksomhed. Men jeg synes, jeg er blevet taget godt imod af kunder og samarbejdspartnere.</blockquote>
+        <div class="om-attrib">
+          <img src="assets/linda-van.jpg" alt="Linda Classen" loading="lazy">
+          <div class="who">
+            <b>Linda Classen</b>
+            <span>Indehaver · Malerfirmaet Linda Classen</span>
+          </div>
         </div>
       </div>
-      <div class="om-photo">
-        <figure>
-          <img src="assets/linda-van.jpg" alt="Linda Classen foran firmabilen" loading="lazy">
-          <figcaption>Linda Classen · Ribe</figcaption>
-        </figure>
-      </div>
+
+      <dl class="om-facts">
+        <div>
+          <dt>Grundlagt</dt>
+          <dd>1. marts 2024<small>Efter mange år som ansat maler gik Linda selv i gang.</small></dd>
+        </div>
+        <div>
+          <dt>Base</dt>
+          <dd>Hermelintoften 38, Ribe<small>Kører ud i hele Ribe og omegn.</small></dd>
+        </div>
+        <div>
+          <dt>Kunder</dt>
+          <dd>Privat og erhverv<small>Fra enkelte rum til nybyg, alment byggeri og fredede huse.</small></dd>
+        </div>
+      </dl>
     </div>
   </section>
 
@@ -574,38 +654,42 @@
 
   <!-- CONTACT -->
   <section id="kontakt" class="alt">
-    <div class="wrap contact-grid">
-      <div class="contact-left">
-        <div class="section-head" style="margin-bottom:36px;">
-          <div class="eyebrow">Kontakt</div>
-          <h2>Ring, mail eller skriv</h2>
-          <p>Fortæl kort hvad opgaven drejer sig om, så vender jeg tilbage hurtigst muligt.</p>
-        </div>
-        <div class="nameplate">
-          <div class="np-row">
-            <div class="np-label">Telefon</div>
-            <div class="np-val"><a href="tel:60144355">60 14 43 55</a></div>
-          </div>
-          <div class="np-row">
-            <div class="np-label">Email</div>
-            <div class="np-val"><a href="mailto:malerclassen@outlook.dk">malerclassen@outlook.dk</a></div>
-          </div>
-          <div class="np-row">
-            <div class="np-label">Adresse</div>
-            <div class="np-val"><a href="https://www.google.com/maps/search/?api=1&query=Hermelintoften+38%2C+6760+Ribe" target="_blank" rel="noopener">Hermelintoften 38, 6760 Ribe</a></div>
-          </div>
-          <div class="np-row">
-            <div class="np-label">CVR</div>
-            <div class="np-val">44610582</div>
-          </div>
-          <div class="np-row">
-            <div class="np-label">Facebook</div>
-            <div class="np-val"><a href="https://www.facebook.com/profile.php?id=61556451752976" target="_blank" rel="noopener">Malerfirmaet Linda Classen</a></div>
-          </div>
-        </div>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Kontakt</div>
+        <h2>Ring, mail eller skriv</h2>
+        <p>Fortæl kort hvad opgaven drejer sig om, så vender jeg tilbage hurtigst muligt.</p>
       </div>
 
-      <form class="contact-form"
+      <div class="contact-panel">
+        <div class="contact-side">
+          <h3>Fat fat i Linda</h3>
+          <p>Ring, hvis det haster — så får du svar med det samme.</p>
+          <div class="np-list">
+            <div class="np-row">
+              <div class="np-label">Telefon</div>
+              <div class="np-val"><a href="tel:60144355">60 14 43 55</a></div>
+            </div>
+            <div class="np-row">
+              <div class="np-label">Email</div>
+              <div class="np-val"><a href="mailto:malerclassen@outlook.dk">malerclassen@outlook.dk</a></div>
+            </div>
+            <div class="np-row">
+              <div class="np-label">Adresse</div>
+              <div class="np-val"><a href="https://www.google.com/maps/search/?api=1&query=Hermelintoften+38%2C+6760+Ribe" target="_blank" rel="noopener">Hermelintoften 38, 6760 Ribe</a></div>
+            </div>
+            <div class="np-row">
+              <div class="np-label">CVR</div>
+              <div class="np-val">44610582</div>
+            </div>
+            <div class="np-row">
+              <div class="np-label">Facebook</div>
+              <div class="np-val"><a href="https://www.facebook.com/profile.php?id=61556451752976" target="_blank" rel="noopener">Malerfirmaet Linda Classen</a></div>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form"
             name="kontakt"
             method="POST"
             action="/tak.html"
@@ -616,6 +700,7 @@
             <label>Udfyld ikke dette felt: <input name="bot-field"></label>
           </p>
           <h3>Skriv en besked</h3>
+          <p class="intro">Så vender jeg tilbage hurtigst muligt.</p>
           <div class="field">
             <label for="navn">Navn</label>
             <input id="navn" name="navn" type="text" autocomplete="name" required>
@@ -634,7 +719,8 @@
           </div>
           <button type="submit" class="btn btn-solid" style="width:100%;">Send besked</button>
           <p class="form-note">Beskeden sendes direkte til Linda. Du kan også ringe på <a href="tel:60144355">60 14 43 55</a>.</p>
-      </form>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -693,6 +779,25 @@
   document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
   document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeLightbox(); });
+
+  // Door image overhangs the text block by a fixed amount, top and bottom
+  (function(){
+    const grid = document.querySelector('.ba-grid');
+    const copy = document.querySelector('.ba-copy');
+    if(!grid || !copy) return;
+    const OVERHANG = 44;               // px above and below the text
+    function sizeDoor(){
+      if(window.matchMedia('(max-width:960px)').matches){
+        grid.style.removeProperty('--ba-h');
+        return;
+      }
+      grid.style.setProperty('--ba-h', (copy.offsetHeight + OVERHANG * 2) + 'px');
+    }
+    sizeDoor();
+    window.addEventListener('resize', sizeDoor);
+    if(window.ResizeObserver) new ResizeObserver(sizeDoor).observe(copy);
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(sizeDoor);
+  })();
 
   // Before/after slider
   (function(){
