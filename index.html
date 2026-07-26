@@ -177,8 +177,7 @@
   .alt{ background:var(--stone); }
 
   /* ---------- Om os ---------- */
-  #om-os{ overflow:hidden; }
-  .om-grid{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); gap:72px; align-items:center; }
+  .om-grid{ display:grid; grid-template-columns:minmax(0,1fr) 400px; gap:72px; align-items:center; }
   .om-text p{ font-size:1.06rem; color:var(--body); margin:0 0 18px; font-weight:300; }
   .om-text p:last-child{ margin-bottom:0; }
   .om-sign{
@@ -186,23 +185,15 @@
     font-family:'Fraunces',serif; font-size:1.15rem; color:var(--ink);
   }
   .om-sign span{ display:block; font-family:'IBM Plex Mono',monospace; font-size:.74rem; letter-spacing:.16em; color:var(--muted); text-transform:uppercase; margin-top:6px; }
-  /* photo bleeds off the right edge of the viewport — editorial, not slide-deck */
-  .om-photo{ position:relative; margin-right:calc(50% - 50vw); }
-  .om-photo figure{ margin:0; position:relative; }
-  .om-photo img{
-    width:100%; aspect-ratio:1/1; object-fit:cover; object-position:66% 34%;
-    display:block;
-  }
+  .om-photo figure{ margin:0; }
+  .om-photo img{ width:100%; height:auto; display:block; }
   .om-photo figcaption{
-    position:absolute; left:0; bottom:0; padding:52px 26px 20px; right:0;
-    background:linear-gradient(to top, rgba(10,11,13,.78), transparent);
-    color:#fff; font-family:'IBM Plex Mono',monospace; font-size:.7rem;
-    letter-spacing:.16em; text-transform:uppercase;
+    margin-top:14px; font-family:'IBM Plex Mono',monospace; font-size:.68rem;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--muted);
   }
   @media (max-width:900px){
     .om-grid{ grid-template-columns:1fr; gap:40px; }
-    .om-photo{ order:-1; margin-right:calc(50% - 50vw); margin-left:calc(50% - 50vw); }
-    .om-photo img{ aspect-ratio:16/10; object-position:64% 32%; }
+    .om-photo{ max-width:400px; }
   }
 
   /* ---------- Services (bevaret) ---------- */
@@ -249,7 +240,7 @@
   .lightbox-cap{ position:absolute; bottom:28px; left:50%; transform:translateX(-50%); color:rgba(255,255,255,.7); font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; }
 
   /* ---------- Before / after ---------- */
-  .ba-grid{ display:grid; grid-template-columns:minmax(0,1fr) 620px; gap:64px; align-items:stretch; }
+  .ba-grid{ display:grid; grid-template-columns:minmax(0,1fr) 400px; gap:72px; align-items:center; }
   .ba-copy{ display:flex; flex-direction:column; justify-content:center; }
   .ba-copy .eyebrow{ margin-bottom:18px; }
   .ba-copy h2{ font-size:clamp(1.85rem, 3vw, 2.55rem); }
@@ -265,13 +256,13 @@
     font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.14em; color:var(--brass);
   }
   .ba-steps li b{ color:var(--ink); font-weight:500; }
-  .before-after-wrap{ max-width:620px; margin:0 auto; width:100%; }
-  @media (max-width:1120px){
+  .before-after-wrap{ max-width:400px; margin:0 auto; width:100%; }
+  @media (max-width:960px){
     .ba-grid{ grid-template-columns:1fr; gap:44px; }
     .ba-copy{ text-align:center; }
     .ba-copy .eyebrow{ justify-content:center; }
     .ba-copy > p{ margin-left:auto; margin-right:auto; }
-    .ba-steps{ text-align:left; max-width:620px; margin-left:auto; margin-right:auto; }
+    .ba-steps{ text-align:left; max-width:400px; margin-left:auto; margin-right:auto; }
   }
   .ba-slider{
     position:relative; width:100%; aspect-ratio:3/4; overflow:hidden;
@@ -406,7 +397,7 @@
       <div class="om-photo">
         <figure>
           <img src="assets/linda-van.jpg" alt="Linda Classen foran firmabilen" loading="lazy">
-          <figcaption>Linda Classen · Hermelintoften 38, Ribe</figcaption>
+          <figcaption>Linda Classen · Ribe</figcaption>
         </figure>
       </div>
     </div>
